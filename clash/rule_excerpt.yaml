@@ -1,0 +1,54 @@
+#根据mine.ini修改而来，配合自定义订阅yaml使用
+rules:
+- "GEOSITE,private,DIRECT"
+- "GEOIP,private,DIRECT,no-resolve"
+- RULE-SET,project_direct,DIRECT
+- RULE-SET,project_proxy,\U0001F680 手动选择
+- "GEOSITE,google-cn,DIRECT"
+- "GEOSITE,category-games@cn,DIRECT"
+- RULE-SET,steam_download_cdn,DIRECT
+- "GEOSITE,category-game-platforms-download,\U0001F3AE 游戏平台"
+- "GEOSITE,category-public-tracker,DIRECT"
+- "GEOSITE,category-communication,\U0001F4AC 即时通讯"
+- "GEOSITE,category-social-media-!cn,\U0001F310 社交媒体"
+- "GEOSITE,openai,\U0001F916 ChatGPT"
+- "GEOSITE,bing,\U0001F916 Copilot"
+- "GEOSITE,category-ai-!cn,\U0001F916 AI服务"
+- "GEOSITE,github,\U0001F680 GitHub"
+- "GEOSITE,category-speedtest,\U0001F680 测速工具"
+- "GEOSITE,steam,\U0001F3AE Steam"
+- "GEOSITE,youtube,\U0001F4F9 YouTube"
+- "GEOSITE,apple-tvplus,\U0001F3A5 AppleTV+"
+- "GEOSITE,apple,\U0001F34E 苹果服务"
+- GEOSITE,microsoft,Ⓜ️ 微软服务
+- "GEOSITE,googlefcm,\U0001F4E2 谷歌FCM"
+- "GEOSITE,google,\U0001F1EC 谷歌服务"
+- "GEOSITE,tiktok,\U0001F3B6 TikTok"
+- "GEOSITE,netflix,\U0001F3A5 Netflix"
+- "GEOSITE,disney,\U0001F3A5 DisneyPlus"
+- "GEOSITE,hbo,\U0001F3A5 HBO"
+- "GEOSITE,primevideo,\U0001F3A5 PrimeVideo"
+- "GEOSITE,category-emby,\U0001F3A5 Emby"
+- "GEOSITE,spotify,\U0001F3BB Spotify"
+- "GEOSITE,bahamut,\U0001F4FA Bahamut"
+- "GEOSITE,category-games,\U0001F3AE 游戏平台"
+- "GEOSITE,category-entertainment,\U0001F30E 国外媒体"
+- "GEOSITE,category-ecommerce,\U0001F6D2 国外电商"
+- "GEOSITE,gfw,\U0001F680 手动选择"
+- "GEOIP,telegram,\U0001F4AC 即时通讯,no-resolve"
+- "GEOIP,twitter,\U0001F310 社交媒体,no-resolve"
+- "GEOIP,facebook,\U0001F310 社交媒体,no-resolve"
+- "GEOIP,google,\U0001F1EC 谷歌服务,no-resolve"
+- "GEOIP,netflix,\U0001F3A5 Netflix,no-resolve"
+- "GEOSITE,cn,DIRECT"
+- "GEOIP,cn,DIRECT,no-resolve"
+- "MATCH,\U0001F41F 漏网之鱼"
+
+rule-anchor:
+  # ip: &ip {type: http, interval: 86400, behavior: ipcidr, format: mrs}
+  # domain: &domain {type: http, interval: 86400, behavior: domain, format: mrs}
+  classyaml: &class {type: http, interval: 86400, behavior: classical, format: yaml}
+rule-providers: 
+  project_direct: {<<: *classyaml, url: "https://testingcf.jsdelivr.net/gh/Aethersailor/Custom_OpenClash_Rules@main/rule/Custom_Direct_Classical.yaml"}
+  project_proxy: {<<: *classyaml, url: "https://testingcf.jsdelivr.net/gh/Aethersailor/Custom_OpenClash_Rules@main/rule/Custom_Proxy_Classical.yaml"}
+  steam_download_cdn: {<<: *classyaml, url: "https://testingcf.jsdelivr.net/gh/Aethersailor/Custom_OpenClash_Rules@main/rule/Steam_CDN_Classical.yaml"}
